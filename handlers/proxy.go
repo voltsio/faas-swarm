@@ -15,8 +15,9 @@ import (
 
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/filters"
+	"github.com/docker/docker/client"
 	"github.com/gorilla/mux"
-	"github.com/moby/moby/client"
+
 	"github.com/openfaas/faas/gateway/requests"
 )
 

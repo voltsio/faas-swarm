@@ -9,7 +9,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/moby/moby/client"
+	"github.com/docker/docker/client"
+
 	"github.com/openfaas/faas-provider"
 	bootTypes "github.com/openfaas/faas-provider/types"
 	"github.com/openfaas/faas-swarm/handlers"

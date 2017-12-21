@@ -13,13 +13,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/docker/docker/reference"
-
+	"github.com/docker/distribution/reference"
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/swarm"
+	"github.com/docker/docker/client"
 	"github.com/docker/docker/registry"
 	units "github.com/docker/go-units"
-	"github.com/moby/moby/client"
+
 	"github.com/openfaas/faas/gateway/requests"
 )
 
@@ -145,6 +145,7 @@ func buildEnv(envProcess string, envVars map[string]string) []string {
 // BuildEncodedAuthConfig for private registry
 func BuildEncodedAuthConfig(basicAuthB64 string, dockerImage string) (string, error) {
 	// extract registry server address
+
 	distributionRef, err := reference.WithName(dockerImage)
 	if err != nil {
 		return "", err
