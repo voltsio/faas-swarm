@@ -41,7 +41,9 @@ func FunctionProxy(wildcard bool, client *client.Client) http.HandlerFunc {
 	}
 
 	return func(w http.ResponseWriter, r *http.Request) {
-		defer r.Body.Close()
+		if r.Body != nil {
+			defer r.Body.Close()
+		}
 
 		switch r.Method {
 		case "POST", "GET":
@@ -52,6 +54,9 @@ func FunctionProxy(wildcard bool, client *client.Client) http.HandlerFunc {
 				log.Print("X-Function: ", xFunctionHeader)
 			}
 
+			vars2 := mux.Vars(r)
+			// service := vars2["name"]
+			fmt.Println(vars2)
 			// getServiceName
 			var serviceName string
 			if wildcard {
