@@ -75,6 +75,8 @@ func (r *Route) Match(req *http.Request, match *RouteMatch) bool {
 	if match.MatchErr == ErrMethodMismatch {
 		// We found a route which matches request method, clear MatchErr
 		match.MatchErr = nil
+		// Then override the mis-matched handler
+		match.Handler = r.handler
 	}
 
 	// Yay, we have a match. Let's collect some info about it.
@@ -256,7 +258,8 @@ func (m headerRegexMatcher) Match(r *http.Request, match *RouteMatch) bool {
 //               "X-Requested-With", "XMLHttpRequest")
 //
 // The above route will only match if both the request header matches both regular expressions.
-// It the value is an empty string, it will match any value if the key is set.
+// If the value is an empty string, it will match any value if the key is set.
+// Use the start and end of string anchors (^ and $) to match an exact value.
 func (r *Route) HeadersRegexp(pairs ...string) *Route {
 	if r.err == nil {
 		var headers map[string]*regexp.Regexp
