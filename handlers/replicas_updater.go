@@ -19,6 +19,8 @@ type ScaleServiceRequest struct {
 }
 
 func ReplicaUpdater(c *client.Client) http.HandlerFunc {
+	serviceQuery := NewSwarmServiceQuery(c)
+
 	return func(w http.ResponseWriter, r *http.Request) {
 
 		vars := mux.Vars(r)
@@ -41,7 +43,6 @@ func ReplicaUpdater(c *client.Client) http.HandlerFunc {
 
 		log.Printf("Scaling %s to %d replicas", functionName, req.Replicas)
 
-		serviceQuery := NewSwarmServiceQuery(c)
 		scaleErr := scaleService(functionName, req.Replicas, serviceQuery)
 		if scaleErr != nil {
 			w.WriteHeader(http.StatusInternalServerError)
@@ -50,12 +51,6 @@ func ReplicaUpdater(c *client.Client) http.HandlerFunc {
 			return
 		}
 
-	}
-}
-
-func Health() http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
 	}
 }
 
