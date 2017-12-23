@@ -40,8 +40,8 @@ func main() {
 		DeleteHandler:  handlers.DeleteHandler(dockerClient),
 		DeployHandler:  handlers.DeployHandler(dockerClient, maxRestarts, restartDelay),
 		FunctionReader: handlers.FunctionReader(true, dockerClient),
-		ReplicaReader:  handlers.ReplicaReader(),
-		ReplicaUpdater: handlers.ReplicaUpdater(),
+		ReplicaReader:  handlers.ReplicaReader(dockerClient),
+		ReplicaUpdater: handlers.ReplicaUpdater(dockerClient),
 		UpdateHandler:  handlers.UpdateHandler(dockerClient, maxRestarts, restartDelay),
 		// Health:        handlers.Health(),
 	}
