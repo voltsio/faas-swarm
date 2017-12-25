@@ -1,6 +1,8 @@
 faas-swarm
 ==========
 
+https://travis-ci.org/openfaas/faas-swarm.svg?branch=master
+
 This is the Docker Swarm provider for OpenFaaS.
 
 The first and canonical implementation of OpenFaaS was tightly coupled to Docker Swarm. This repository aims to decouple the two so that all providers are ismorphic.
