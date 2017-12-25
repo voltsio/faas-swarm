@@ -12,9 +12,7 @@ Testing/development
 Todo:
 * [x] Create
 * [x] Proxy
-* [ ] Update
-* [ ] Delete
-* [ ] List
-* [ ] Scale
-
-
+* [x] Update
+* [x] Delete
+* [x] List
+* [x] Scale
