@@ -1,7 +1,7 @@
 faas-swarm
 ==========
 
-https://travis-ci.org/openfaas/faas-swarm.svg?branch=master
+[![Build Status](https://travis-ci.org/openfaas/faas-swarm.svg?branch=master)](https://travis-ci.org/openfaas/faas-swarm)
 
 This is the Docker Swarm provider for OpenFaaS.
 
