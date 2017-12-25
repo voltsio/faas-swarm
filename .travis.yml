@@ -8,6 +8,7 @@ addons:
       - docker-ce
 
 before_install:
-
+    - ./contrib/ci.sh
+    
 script:
     - make
